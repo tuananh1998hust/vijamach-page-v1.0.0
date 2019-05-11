@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Pages
 import HomePage from "./pages/HomePage";
+// Components
+import AppNavbar from "./components/AppNavbar";
+import Footer from "./components/Footer";
 // CSS
 import "./App.css";
 
@@ -11,7 +14,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <AppNavbar />
           <Route exact path="/" component={HomePage} />
+          <Footer />
         </div>
       </Router>
     );

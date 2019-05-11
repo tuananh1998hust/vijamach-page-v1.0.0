@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+
+#navbar {
+  margin-bottom: 75px;
+}
+
+#navbar .nav-logo {
+  font-family: "Indie Flower", cursive;
+  font-size: 36px;
+  color: #fafafa;
+  margin-right: 50px;
+}
+
+#navbar .nav-logo:hover {
+  text-decoration: none;
+}
+
+#banner {
+  min-height: 400px;
+  background-image: url("./imgs/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 75px;
+}
+
+.services .service:hover {
+  background-color: #dad2c2;
+  border-radius: 10px;
+  transition: all 300ms;
+}
+
+#footer {
+  background-color: #000;
+  color: #fafafa;
+  padding: 50px 10px;
+}
+
+#footer .footer-line {
+  height: 1px;
+  background-color: #fafafa;
+  margin: 50px;
+}
+
+#footer .footer-logo {
+  font-family: "Indie Flower", cursive;
+  font-size: 36px;
+  color: #fafafa;
+}
+
+#footer .footer-logo:hover {
+  text-decoration: none;
+}
+
+#footer .footer-link {
+  color: #fafafa;
+}
+
+#footer .footer-icon .fab {
+  color: #fafafa;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  padding: 15px;
+  width: 48px;
+  height: 48px;
+}
+
+#footer .footer-icon:hover .fab {
+  background-color: #fff;
+  color: #000;
+  transition: all 500ms;
+}
