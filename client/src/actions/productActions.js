@@ -1,5 +1,10 @@
 import axios from "axios";
-import { GET_PRODUCTS, LOAD_PRODUCTS, DETAIL_PRODUCT } from "./types";
+import {
+  GET_PRODUCTS,
+  LOAD_PRODUCTS,
+  DETAIL_PRODUCT,
+  ADD_TO_CART
+} from "./types";
 
 export const getProducts = () => dispatch => {
   dispatch({ type: LOAD_PRODUCTS });
@@ -21,4 +26,11 @@ export const loadDetailProduct = id => dispatch => {
       payload: res.data
     })
   );
+};
+
+export const addToCart = product => dispatch => {
+  dispatch({
+    type: ADD_TO_CART,
+    payload: product
+  });
 };

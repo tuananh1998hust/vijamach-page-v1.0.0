@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Spinner } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -13,35 +13,40 @@ class Products extends Component {
   }
 
   render() {
-    const { products } = this.props.product;
+    const { loading, products } = this.props.product;
 
     return (
       <Container>
         <h2 className="text-center mb-5">OUR PRODUCTS</h2>
-        <Row className="mb-5">
-          {products.map(product => (
-            <Col sm="12" md="4" key={product._id}>
-              <div
-                className="product"
-                style={{ backgroundImage: "url(" + product.imgUrl + ")" }}
-              >
-                <div className="product-text">
-                  {product.name} <span className="price">${product.price}</span>
-                  <br />
-                  <div className="product-hidden">
-                    <small>{product.desc}. </small>
-                    <Link
-                      to={`/products/${product._id}`}
-                      className="btn btn-outline-light"
-                    >
-                      Views
-                    </Link>
+        {loading === true ? (
+          <Spinner className="mb-5" style={{ width: "3rem", height: "3rem" }} />
+        ) : (
+          <Row className="mb-5">
+            {products.map(product => (
+              <Col sm="12" md="4" key={product._id}>
+                <div
+                  className="product"
+                  style={{ backgroundImage: "url(" + product.imgUrl + ")" }}
+                >
+                  <div className="product-text">
+                    {product.name}{" "}
+                    <span className="price">${product.price}</span>
+                    <br />
+                    <div className="product-hidden">
+                      <small>{product.desc}. </small>
+                      <Link
+                        to={`/products/${product._id}`}
+                        className="btn btn-outline-light"
+                      >
+                        Views
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
+              </Col>
+            ))}
+          </Row>
+        )}
       </Container>
     );
   }

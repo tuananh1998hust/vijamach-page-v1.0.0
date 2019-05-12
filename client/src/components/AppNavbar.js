@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class AppNavbar extends Component {
   state = {
@@ -14,6 +16,8 @@ class AppNavbar extends Component {
   };
 
   render() {
+    const { carts } = this.props.product;
+
     return (
       <div id="navbar">
         <Navbar color="dark" dark expand="sm">
@@ -40,7 +44,8 @@ class AppNavbar extends Component {
               </NavItem>
               <NavItem>
                 <Link className="nav-link" to="/cart">
-                  <i className="fas fa-shopping-cart" />
+                  <i className="fas fa-shopping-cart mr-1" />
+                  {carts.length ? <span>({carts.length})</span> : null}
                 </Link>
               </NavItem>
             </Nav>
@@ -51,4 +56,12 @@ class AppNavbar extends Component {
   }
 }
 
-export default AppNavbar;
+AppNavbar.propTypes = {
+  product: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  product: state.product
+});
+
+export default connect(mapStateToProps)(AppNavbar);

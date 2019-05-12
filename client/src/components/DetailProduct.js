@@ -1,22 +1,28 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Button, Spinner } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 // Actions
-import { loadDetailProduct } from "../actions/productActions";
+import { loadDetailProduct, addToCart } from "../actions/productActions";
 
 class DetailProduct extends Component {
   componentDidMount() {
     this.props.loadDetailProduct(this.props.id);
   }
 
+  onAddToCartClick = product => {
+    this.props.addToCart(product);
+  };
+
   render() {
-    const { detailProduct } = this.props.product;
+    const { detailProduct, loading } = this.props.product;
 
     return (
       <Container>
-        {detailProduct.length > 0 &&
+        {loading === true ? (
+          <Spinner className="mb-5" style={{ width: "3rem", height: "3rem" }} />
+        ) : (
           detailProduct.map(product => (
             <Row className="mb-5" key={product._id}>
               <Col className="mb-2" sm="6" md="3">
@@ -49,13 +55,18 @@ class DetailProduct extends Component {
                   <p className="text-secondary mb-1">price:</p>
                   <h3 className="text-danger mb-1 ml-2">${product.price}</h3>
                 </div>
-                <Button outline color="danger" block>
+                <Button
+                  outline
+                  color="danger"
+                  block
+                  onClick={this.props.addToCart.bind(this, product)}
+                >
                   <i className="fas fa-cart-plus mr-2" /> Buy
                 </Button>
               </Col>
             </Row>
-          ))}
-        {detailProduct.length === 0 && "No Product"}
+          ))
+        )}
       </Container>
     );
   }
@@ -63,7 +74,8 @@ class DetailProduct extends Component {
 
 DetailProduct.propTypes = {
   product: PropTypes.object.isRequired,
-  loadDetailProduct: PropTypes.func.isRequired
+  loadDetailProduct: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -72,5 +84,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loadDetailProduct }
+  { loadDetailProduct, addToCart }
 )(DetailProduct);

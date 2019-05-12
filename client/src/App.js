@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import Products from "./pages/Products";
 import DetailProducts from "./pages/DetailProducts";
 import About from "./pages/About";
+import Carts from "./pages/Carts";
 // Components
 import AppNavbar from "./components/AppNavbar";
 import Footer from "./components/Footer";
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/:id" component={DetailProducts} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/cart" component={Carts} />
             <Footer />
           </div>
         </Router>
