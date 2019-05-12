@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table, Spinner } from "reactstrap";
+import { Container, Row, Col, Table, Spinner, Button } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 // Components
 import FormSupport from "../components/FormSupport";
+// Action
+import { deleteCartItem } from "../actions/productActions";
 
 class Carts extends Component {
+  onDeleteClick = id => {
+    this.props.deleteCartItem(id);
+  };
+
   render() {
     const { carts, loading } = this.props.product;
 
@@ -40,7 +46,16 @@ class Carts extends Component {
                       <td>
                         <h3 className="mb-1">{cart.name}</h3>
                       </td>
-                      <td>${cart.price}</td>
+                      <td className="d-flex align-items-center">
+                        <p className="mr-2 mb-0">${cart.price}</p>
+                        <Button
+                          size="sm"
+                          color="danger"
+                          onClick={this.onDeleteClick.bind(this, cart._id)}
+                        >
+                          &times;
+                        </Button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -65,11 +80,15 @@ class Carts extends Component {
 }
 
 Carts.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
+  deleteCartItem: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   product: state.product
 });
 
-export default connect(mapStateToProps)(Carts);
+export default connect(
+  mapStateToProps,
+  { deleteCartItem }
+)(Carts);

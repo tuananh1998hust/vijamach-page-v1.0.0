@@ -2,7 +2,8 @@ import {
   GET_PRODUCTS,
   LOAD_PRODUCTS,
   DETAIL_PRODUCT,
-  ADD_TO_CART
+  ADD_TO_CART,
+  DELETE_CART_ITEM
 } from "../actions/types";
 
 const initialState = {
@@ -42,6 +43,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         carts: updateCarts
+      };
+
+    case DELETE_CART_ITEM:
+      return {
+        ...state,
+        carts: state.carts.filter(cart => cart._id !== action.payload)
       };
 
     default:
