@@ -10,6 +10,13 @@ module.exports.getProducts = (req, res) => {
     .then(products => res.json(products));
 };
 
+// @route    GET api/products/:id
+// @desc     Get Products By Id
+// @access   Public
+module.exports.getDetailProduct = (req, res) => {
+  Product.findById(req.params.id).then(product => res.json(product));
+};
+
 // @route    POST api/products
 // @desc     Create New Products
 // @access   Public

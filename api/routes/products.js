@@ -9,6 +9,11 @@ const controllerProducts = require("../controller/products");
 // @access   Public
 router.get("/", controllerProducts.getProducts);
 
+// @route    GET api/products/:id
+// @desc     Get Products By Id
+// @access   Public
+router.get("/:id", controllerProducts.getDetailProduct);
+
 // @route    POST api/products
 // @desc     Create New Products
 // @access   Public

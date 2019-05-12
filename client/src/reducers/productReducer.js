@@ -1,8 +1,9 @@
-import { GET_PRODUCTS, LOAD_PRODUCTS } from "../actions/types";
+import { GET_PRODUCTS, LOAD_PRODUCTS, DETAIL_PRODUCT } from "../actions/types";
 
 const initialState = {
   products: [],
-  loading: false
+  loading: false,
+  detailProduct: []
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +19,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: true
+      };
+
+    case DETAIL_PRODUCT:
+      return {
+        ...state,
+        detailProduct: [action.payload],
+        loading: false
       };
 
     default:

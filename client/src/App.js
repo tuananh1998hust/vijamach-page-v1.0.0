@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 // Pages
 import HomePage from "./pages/HomePage";
 import Products from "./pages/Products";
+import DetailProducts from "./pages/DetailProducts";
 // Components
 import AppNavbar from "./components/AppNavbar";
 import Footer from "./components/Footer";
@@ -22,6 +23,7 @@ class App extends Component {
             <AppNavbar />
             <Route exact path="/" component={HomePage} />
             <Route exact path="/products" component={Products} />
+            <Route exact path="/products/:id" component={DetailProducts} />
             <Footer />
           </div>
         </Router>
