@@ -43,9 +43,31 @@ class AppNavbar extends Component {
                 </Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link" to="/cart">
+                <Link
+                  className="nav-link d-flex align-items-center cart"
+                  to="/cart"
+                >
                   <i className="fas fa-shopping-cart mr-1" />
-                  {carts.length ? <span>({carts.length})</span> : null}
+                  {carts.length ? (
+                    <div>
+                      <span>({carts.length})</span>
+                      <div className="cart-view">
+                        {carts.map((cart, index) => (
+                          <div className="d-flex cart-item mb-2" key={index}>
+                            <img
+                              alt="cart"
+                              className="cart-img mr-5"
+                              src={cart.imgUrl}
+                            />
+                            <div className="flex-grow-1">
+                              <p>{cart.name}</p>
+                              <h5 className="text-danger">${cart.price}</h5>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                 </Link>
               </NavItem>
             </Nav>

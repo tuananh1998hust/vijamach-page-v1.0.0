@@ -15,6 +15,35 @@
   text-decoration: none;
 }
 
+#navbar .cart {
+  position: relative;
+  transition: all 500ms;
+}
+
+#navbar .cart .cart-view {
+  opacity: 0;
+  height: 0;
+}
+
+#navbar .cart:hover .cart-view {
+  width: 350px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  background-color: #fafafa;
+  color: #707070;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  height: 300px;
+}
+
+#navbar .cart-view .cart-item .cart-img {
+  width: 128px;
+  height: 64px;
+}
+
 #banner {
   min-height: 400px;
   background-image: url("./imgs/banner.jpg");
