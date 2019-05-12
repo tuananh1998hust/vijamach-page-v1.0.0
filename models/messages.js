@@ -16,7 +16,8 @@ const MessageSchema = new Schema({
     required: true
   },
   mess: {
-    type: String
+    type: [],
+    default: []
   },
   date: {
     type: Date,
