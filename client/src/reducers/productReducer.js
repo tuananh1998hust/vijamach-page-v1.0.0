@@ -38,17 +38,21 @@ export default function(state = initialState, action) {
       };
 
     case ADD_TO_CART:
-      let updateCarts = state.carts.concat(action.payload);
-      localStorage.setItem("carts", JSON.stringify(updateCarts));
+      let updateAddToCarts = state.carts.concat(action.payload);
+      localStorage.setItem("carts", JSON.stringify(updateAddToCarts));
       return {
         ...state,
-        carts: updateCarts
+        carts: updateAddToCarts
       };
 
     case DELETE_CART_ITEM:
+      let updateDeleteCarts = state.carts.filter(
+        cart => cart._id !== action.payload
+      );
+      localStorage.setItem("carts", JSON.stringify(updateDeleteCarts));
       return {
         ...state,
-        carts: state.carts.filter(cart => cart._id !== action.payload)
+        carts: updateDeleteCarts
       };
 
     default:
