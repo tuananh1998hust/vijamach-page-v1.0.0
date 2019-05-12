@@ -68,7 +68,7 @@ class Carts extends Component {
                   return (total += cart.price);
                 }, 0)}
               </h1>
-              <FormSupport />
+              <FormSupport carts={carts} />
             </Col>
           </Row>
         ) : (

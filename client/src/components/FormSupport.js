@@ -19,7 +19,22 @@ class FormSupport extends Component {
   onSubmit = e => {
     e.preventDefault();
 
+    const { carts } = this.props;
+
     const { name, email, phone, mess } = this.state;
+
+    if (carts) {
+      console.log(carts, name, email, phone, mess);
+
+      this.setState({
+        name: "",
+        email: "",
+        phone: "",
+        mess: ""
+      });
+
+      return;
+    }
 
     const newMess = {
       name,
