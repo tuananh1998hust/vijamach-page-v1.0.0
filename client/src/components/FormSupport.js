@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Input } from "reactstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+// Actions
+import { addMessage } from "../actions/messageActions";
 
 class FormSupport extends Component {
   constructor(props) {
@@ -43,7 +48,7 @@ class FormSupport extends Component {
       mess
     };
 
-    console.log(newMess);
+    this.props.addMessage(newMess);
 
     this.setState({
       name: "",
@@ -98,4 +103,11 @@ class FormSupport extends Component {
   }
 }
 
-export default FormSupport;
+FormSupport.propTypes = {
+  addMessage: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addMessage }
+)(FormSupport);
