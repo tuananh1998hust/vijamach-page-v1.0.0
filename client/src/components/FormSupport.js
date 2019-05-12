@@ -74,7 +74,7 @@ class FormSupport extends Component {
             value={this.state.mess}
             onChange={this.onChange}
           />
-          <Button outline color="light" block>
+          <Button outline color={this.props.color} block>
             Send
           </Button>
         </FormGroup>

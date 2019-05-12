@@ -54,7 +54,7 @@ const Footer = () => (
         </Link>
       </Col>
       <Col sm="12" md="4">
-        <FormSupport />
+        <FormSupport color="light" />
       </Col>
     </Row>
     <div className="footer-line" />
