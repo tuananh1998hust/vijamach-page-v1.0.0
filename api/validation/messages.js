@@ -4,7 +4,7 @@ const validator = require("validator");
 // @desc     Validation Body Input
 // @access   Public
 module.exports = (req, res, next) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, mess } = req.body;
 
   let errors = [];
 
@@ -16,7 +16,8 @@ module.exports = (req, res, next) => {
     if (
       validator.isEmpty(name.trim("")) ||
       validator.isEmpty(email.trim("")) ||
-      validator.isEmpty(phone.trim(""))
+      validator.isEmpty(phone.trim("")) ||
+      validator.isEmpty(mess.trim(""))
     ) {
       errors.push("Please Fill All The Fields");
     }
