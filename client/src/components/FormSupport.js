@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 // Actions
 import { addMessage } from "../actions/messageActions";
+import { addOrder } from "../actions/orderActions";
 
 class FormSupport extends Component {
   constructor(props) {
@@ -29,7 +30,13 @@ class FormSupport extends Component {
     const { name, email, phone, mess } = this.state;
 
     if (carts) {
-      console.log(carts, name, email, phone, mess);
+      this.props.addOrder({
+        name,
+        email,
+        phone,
+        mess,
+        carts
+      });
 
       this.setState({
         name: "",
@@ -104,10 +111,11 @@ class FormSupport extends Component {
 }
 
 FormSupport.propTypes = {
-  addMessage: PropTypes.func.isRequired
+  addMessage: PropTypes.func.isRequired,
+  addOrder: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { addMessage }
+  { addMessage, addOrder }
 )(FormSupport);

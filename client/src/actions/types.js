@@ -5,3 +5,5 @@ export const ADD_TO_CART = "ADD_TO_CART";
 export const DELETE_CART_ITEM = "DELETE_CART_ITEM";
 export const ADD_MESSAGES = "ADD_MESSAGES";
 export const GET_ERRORS = "GET_ERRORS";
+export const ADD_ORDER = "ADD_ORDER";
+export const CLEAR_CARTS = "CLEAR_CARTS";

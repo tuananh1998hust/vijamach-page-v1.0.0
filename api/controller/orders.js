@@ -16,13 +16,13 @@ module.exports.getOrderList = (req, res) => {
 module.exports.postOrderList = (req, res) => {
   const { name, email, phone, mess, carts } = req.body;
 
-  const newOrder = {
+  const newOrder = new Order({
     name,
     email,
     phone,
     mess,
     carts
-  };
+  });
 
   newOrder.save().then(order => res.json(order));
 };

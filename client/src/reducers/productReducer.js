@@ -3,7 +3,8 @@ import {
   LOAD_PRODUCTS,
   DETAIL_PRODUCT,
   ADD_TO_CART,
-  DELETE_CART_ITEM
+  DELETE_CART_ITEM,
+  CLEAR_CARTS
 } from "../actions/types";
 
 const initialState = {
@@ -53,6 +54,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         carts: updateDeleteCarts
+      };
+
+    case CLEAR_CARTS:
+      localStorage.removeItem("carts");
+      return {
+        ...state,
+        carts: []
       };
 
     default:
