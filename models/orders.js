@@ -16,8 +16,8 @@ const OrderSchema = new Schema({
     required: true
   },
   mess: {
-    type: [],
-    default: []
+    type: String,
+    required: true
   },
   carts: {
     type: [

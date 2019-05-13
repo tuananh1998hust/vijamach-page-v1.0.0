@@ -1,3 +1,5 @@
+const nodemailer = require("nodemailer");
+
 // Message Model
 const Message = require("../../models/messages");
 
@@ -15,6 +17,35 @@ module.exports.getMessages = (req, res) => {
 // @access   Public
 module.exports.postMessages = (req, res) => {
   const { name, email, phone, mess } = req.body;
+
+  const transporter = nodemailer.createTransport({
+    // Config Mail Server
+    service: "gmail",
+    auth: {
+      user: "vijamach.info@gmail.com",
+      pass: "vijamachinfo1998"
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  const messOpitons = {
+    // Message Option
+    from: "vijamach.info@gmail.com",
+    to: `${email}`,
+    subject: "Vijamach Support ✔",
+    text: "Thank you for send email to us. We will respond as soon as possible"
+  };
+
+  // Send  Mail
+  transporter
+    .sendMail(messOpitons)
+    .then(info => {
+      console.log(info);
+      console.log(`One Message Is Send To ${email}`);
+    })
+    .catch(err => console.log(err));
 
   Message.findOne({ email }).then(user => {
     if (!user) {
