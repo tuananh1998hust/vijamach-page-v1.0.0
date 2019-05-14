@@ -1,0 +1,18 @@
+extends ../layout/common
+
+block content
+  .container
+    h2.text-center.mb-5 Signin To DashBoard
+    .row
+      .col-sm-12.col-md-6.offset-md-3
+        if errors
+          each error in errors
+            .alert.alert-danger= error
+
+        form(action="/admin/login" method="POST")
+          .form-group
+            label(for="username") UserName
+            input#username.form-control.mb-2(type="text" name="username" placeholder="UserName" value=username ? username : '')
+            label(for="password") PassWord
+            input#password.form-control.mb-2(type="password" name="password" placeholder="Password")
+            button.btn.btn-outline-success.btn-block  Sign In

@@ -1,0 +1,38 @@
+extends ../layout/common
+
+block content
+  .row
+    .col-sm-12.col-md-2
+      include ../layout/sidebar
+    .col-sm-12.col-md-10
+      table.table.table-hover
+        thead
+          tr
+            th(scope='col')
+              form(action="/admin/dashboard/products/search", method="GET")
+                input.p-1(name="product", type="text", placeholder="Search Product", value= search ? search : '')
+            th(scope='col') Images
+            th(scope='col') Price
+            th(scope='col') Types
+            th(scope='col') Count
+            th(scope='col') Delete
+        tbody
+          if products
+            each product in products
+              tr
+                td
+                  p.mb-2  #{product.name}
+                  p.mb-2  #{product._id}
+                td
+                  img(src=product.imgUrl, alt="product" width="128px" height="64px")
+                td
+                  h5.text-danger  $#{product.price}
+                td  #{product.types_product}
+                td
+                  .d-flex.align-items-center
+                    p.mr-2.mb-0 #{product.count}
+                    a(href="#")
+                      i.far.fa-edit
+                td
+                  a(href="#").btn.btn-sm.btn-danger  &times;
+            

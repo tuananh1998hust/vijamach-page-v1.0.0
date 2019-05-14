@@ -1,0 +1,28 @@
+extends ../layout/common
+
+block content
+  .row
+    .col-sm-12.col-md-2
+      include ../layout/sidebar
+    .col-sm-12.col-md-10
+      table.table.table-hover
+        thead
+          tr
+            th(scope='col')
+              form(action="/admin/dashboard/messages/search", method="GET")
+                input.p-1(name="customer", type="text", placeholder="Search Customer", value= search ? search : '')
+            th(scope='col') Phone & Email
+            th(scope='col') Message
+            th(scope='col') Delete
+        tbody
+          if messages
+            each message in messages
+              tr
+                td  #{message.name}
+                td
+                  p.mb-2  #{message.phone}
+                  p.mb-2  #{message.email}
+                td  #{message.mess}
+                td
+                  button.btn.btn-sm.btn-danger  &times;
+            
